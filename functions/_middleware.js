@@ -14,6 +14,8 @@ const abTest = async ({ request, next, env }) => {
       // pass the request to /test
       url.pathname = newHomepagePathName
       return env.ASSETS.fetch(url)
+    } else if (cookie && cookie.includes(`${cookieName}=current`)){
+        return env.ASSETS.fetch(url)
     } else {
       const percentage = Math.floor(Math.random() * 100)
       let version = "current" // default version
