@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script src="/js/player.js"></script>
     <title>Vast test</title>
   </head>
   <body>
@@ -8,40 +9,17 @@
 
     <div>
 
-      <script src="https://cdn.fluidplayer.com/v3/current/fluidplayer.min.js"></script>
-
-      <video id="my-video" controls="" style="width: 640px; height: 360px;">
-          <source src="https://iab-publicfiles.s3.amazonaws.com/vast/VAST-4.0-Short-Intro-low-resolution.mp4" type="video/mp4">
+      <video id="vid1" width="640" height="400" controls class="video-js vjs-default-skin" data-setup='{"autoplay":false}' poster="your-poster.jpg">
+        <source id ="mysrc" src="https://iab-publicfiles.s3.amazonaws.com/vast/VAST-4.0-Short-Intro-low-resolution.mp4" type="video/mp4">
+        Your browser does not support video.
       </video>
-
-      <script type="application/javascript">
-          var testVideo = fluidPlayer(
-              "my-video",
-              {
-                  vastOptions: {
-                      "adList": [
-                          {
-                              "roll": "preRoll",
-                              "vastTag": "https://syndication.native7.com/splash.php?idzone=238"
-                          },
-                          {
-                              "roll": "midRoll",
-                              "vastTag": "https://syndication.native7.com/splash.php?idzone=238",
-                              "timer": 8
-                          },
-                          {
-                              "roll": "midRoll",
-                              "vastTag": "https://syndication.native7.com/splash.php?idzone=238",
-                              "timer": 10
-                          },
-                          {
-                              "roll": "postRoll",
-                              "vastTag": "https://syndication.native7.com/splash.php?idzone=238"
-                          }
-                  ]
-              }
-      }
-          );
+      <div id="companion"></div>
+      
+      <script>
+        var player = videojs('vid1');
+    
+      
+        player.vast({url: 'https://syndication.native7.com/splash.php?idzone=238', skip: 8});
       </script>
 
     </div>
